@@ -3,7 +3,8 @@
   "version": "0.2.5",
   "description": "ebisu bot",
   "engines": {
-    "node": "5.9.1"
+    "node": "5.9.X",
+    "npm": "2.14.X"
   },
   "main": "index.js",
   "scripts": {
