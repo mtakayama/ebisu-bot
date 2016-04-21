@@ -1,27 +1,15 @@
-var cool = require('cool-ascii-faces');
-var express = require('express');
-var app = express();
+var restify = require('restify');
+var builder = require('botbuilder');
 
-app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(request, response) {
-  response.render('pages/index');
+// Create bot and add dialogs
+var bot = new builder.BotConnectorBot({ appId: 'ebisu', appSecret: 'e159fb9b61304f0e9148cd1e86a14b68' });
+bot.add('/', function (session) {
+    session.send('Hello World');
 });
 
-app.get('/cool', function(request, response) {
-  response.send('Hello World!');
-});
-
-app.get('/hello', function(request, response) {
-  response.send('Hello World!');
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+// Setup Restify Server
+var server = restify.createServer();
+server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
+server.listen(process.env.port || 3978, function () {
+    console.log('%s listening to %s', server.name, server.url);
 });
