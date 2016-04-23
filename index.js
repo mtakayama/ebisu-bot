@@ -27,7 +27,7 @@ bot.add('/', function (session) {
 // Setup Restify Server
 const server = restify.createServer();
 var port = process.env.PORT || 5000;
-server.post('/v1/chat', skype.messagingHandler(botService));
+server.post('/api/messages', skype.messagingHandler(botService));
 server.listen(port, function () {
    console.log('%s listening to %s', server.name, server.url);
 });
