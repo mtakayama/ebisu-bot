@@ -9,7 +9,7 @@ var app_secret = process.env.app_secret || 'SRWy8ivbBacwOjSJ8axsCtP';
 // Initialize the BotService
 const botService = new skype.BotService({
     messaging: {
-        botId: bot_id,
+        botId: "28:<bot’s id="+bot_id+">",
         serverUrl : "https://apis.skype.com",
         requestTimeout : 15000,
         appId: app_id,
@@ -27,7 +27,7 @@ botService.on('personalMessage', (bot, data) => {
 
 // Setup Restify Server
 const server = restify.createServer();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 server.post('/api/messages', skype.messagingHandler(botService));
 server.listen(port, function () {
    console.log('%s listening to %s', server.name, server.url);
