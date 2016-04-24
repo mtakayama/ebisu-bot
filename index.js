@@ -9,7 +9,7 @@ var app_secret = process.env.app_secret || 'SRWy8ivbBacwOjSJ8axsCtP';
 // Initialize the BotService
 const botService = new skype.BotService({
     messaging: {
-        botId: '28:<bot’s id="">',
+        botId: bot_id,
         serverUrl : "https://apis.skype.com",
         requestTimeout : 15000,
         appId: app_id,
