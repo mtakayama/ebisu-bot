@@ -22,15 +22,19 @@ botService.on('contactAdded', (bot, data) => {
 });
 
 botService.on('personalMessage', (bot, data) => {
-    bot.reply(`Hey ${data.from}. Thank you for your message: "${data.content}".`, true);
+  console.log('kitaaa1');
+    bot.reply("hellooooo", true);
+});
+botService.on('Message', (bot, data) => {
+    console.log('kitaaa2');
+    bot.reply("hello", true);
 });
 
 // Setup Restify Server
 const server = restify.createServer();
 server.use(skype.ensureHttps(true));
-server.use(skype.verifySkypeCert({}));
+// server.use(skype.verifySkypeCert({}));
 const port = process.env.PORT || 8080;
-server.post('/api/messages', skype.messagingHandler(botService));
-server.listen(port, function () {
-   console.log('%s listening to %s', server.name, server.url);
-});
+server.post('/v1/chat', skype.messagingHandler(botService));
+server.listen(port);
+console.log('Listening for incoming requests on port ' + port);
