@@ -1,6 +1,7 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 
+
 var bot_id = process.env.bot_id || '655e0a0d-a998-4f26-aa5c-7310fdac1f11';
 var app_id = process.env.app_id || 'ebisu';
 var app_secret = process.env.app_secret || 'e159fb9b61304f0e9148cd1e86a14b68';
