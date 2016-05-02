@@ -39,8 +39,8 @@ botService.on('Message', (bot, data) => {
 
 // Setup Restify Server
 const server = restify.createServer();
-// server.use(skype.ensureHttps(true));
-// server.use(skype.verifySkypeCert({}));
+server.use(skype.ensureHttps(true));
+server.use(skype.verifySkypeCert({}));
 const port = process.env.PORT || 8080;
 server.post('/api/messages', skype.messagingHandler(botService));
 server.listen(port, function () {
